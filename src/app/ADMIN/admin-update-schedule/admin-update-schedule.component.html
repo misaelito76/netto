@@ -1,0 +1,158 @@
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm col-md-0 mr-0" routerLink="/">
+        <span class="user-image" style="background-image: url('assets/Netto.png')"></span>Netto
+    </a>
+
+    <a class="nav-item text-white" style="padding-right: .90rem" routerLink="/login" *ngIf="isLogin">
+        <span>Login</span>
+    </a>
+    <a class="nav-item " *ngIf="!isLogin">
+<<<<<<< HEAD:src/app/ADMIN/admin-update-schedule/admin-update-schedule.component.html
+        <a class="nav-link text-white" (click)="goBack()">Back</a>
+=======
+        <a class="nav-link text-white" href="#" (click)="goBack()">Back</a>
+>>>>>>> 372b0dbdb9b40b2b7c4bd2da67b7ec9a45abd0c9:src/app/admin-update-schedule/admin-update-schedule.component.html
+    </a>
+    <div class="btn-toolbar mb-2 mb-md-0">
+
+
+    </div>
+
+
+</nav>
+
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <nav style="background-color:black" class="col-md-2 d-md-block  sidebar text-white">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+
+
+                    <!-- routerLink="/view-students" to navigate to view-students component -->
+                    <!-- routerLinkActive="active" activates active class for component-->
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/admin-list" routerLinkActive="active">
+                            <i class="fas fa-list-ul"></i>My schedule
+                        </a>
+                    </li>
+
+                    <!-- routerLink="/update-schedule" to navigate to view-students component -->
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/" routerLinkActive="active">
+                            <i class="fas fa-plus"></i>Update
+                        </a>
+                    </li>
+
+                    <!-- routerLink="/update-schedule" to navigate to view-students component -->
+                    <li class="nav-item ">
+                        <a class="nav-link text-white" routerLink="/update-schedule" routerLinkActive="active">
+                            <i class="fas fa-plus"></i>xx
+                        </a>
+                    </li>
+
+                    <!-- routerLink="/update-schedule" to navigate to view-students component -->
+                    <li class="nav-item ">
+                        <a class="nav-link text-white" routerLink="/update-schedule" routerLinkActive="active">
+                            <i class="fas fa-plus"></i>xx
+                        </a>
+                    </li>
+
+                    <!-- routerLink="/update-schedule" to navigate to view-students component -->
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/update-schedule" routerLinkActive="active">
+                            <i class="fas fa-plus"></i>xxx
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <br><br>
+
+
+
+        <div class="container text-center">
+            <br><br> <br><br><br><br>
+            <h1 class="h2 ">Update schedule <i class="far fa-clipboard"></i> </h1>
+
+            <br><br>
+            <div class="row justify-content-center align-items-center">
+                <!-- Client
+                    form -->
+                <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label><b>Name:</b></label>
+                            <input type="text" formControlName="FirstName" class="form-control" required>
+                            <p *ngIf="FirstName.touched && FirstName.invalid" class="error"><sup>*</sup>Please enter at least first name</p>
+                            <p *ngIf="FirstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label><b>Adress:</b></label>
+                            <input type="text" formControlName="Adress" class="form-control" required>
+                            <p *ngIf="Adress.touched && FirstName.invalid" class="error"><sup>*</sup>Please enter a valid adress</p>
+                            <p *ngIf="Adress.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label><b>Date:</b></label>
+
+                            <input type="date" formControlName="Date" class="form-control text-center" required>
+                            <p *ngIf="Date.touched && Date.invalid" class="error"><sup>*</sup>Please enter date</p>
+                            <p *ngIf="Date.errors?.minlength" class="error"><sup>*</sup>Date shouldn't be less than 2 words</p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label><b>Time:</b></label>
+                            <input type="time" formControlName="time" class="form-control text-center" required>
+                            <p *ngIf="time.touched && time.invalid" class="error"><sup>*</sup>Please enter time</p>
+                            <p *ngIf="time.errors?.time" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label><b>Email:</b></label>
+                            <input type="email" formControlName="email" class="form-control" required>
+                            <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please enter email</p>
+                            <p *ngIf="email.errors?.email" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label><b>Mobile:</b></label>
+                            <input type="text" formControlName="mobileNumber" class="form-control" required>
+                            <p *ngIf="mobileNumber.touched && mobileNumber.invalid" class="error"><sup>*</sup>Please provide contact number
+                            </p>
+                            <p *ngIf="mobileNumber.errors?.pattern" class="error"><sup>*</sup>Use numbers only number
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <label><b>Instructions:</b></label>
+                            <textarea rows="2" cols="20" type="text" formControlName="Instructions" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="button" class="btn btn-danger gap-right" (click)="ResetForm()">Reset</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!editForm.valid">Update</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <br><br><br>
+            <div class=" text-center">
+                <p class="custom-text">A Company created for <strong>Detailed Residential and commercial cleaning</strong> Based in <strong>Montreal,Qc Canada</strong></p>
+            </div>
+        </div>
+    </div>
+</div>

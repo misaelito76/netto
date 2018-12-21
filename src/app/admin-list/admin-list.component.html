@@ -1,0 +1,50 @@
+<div class="table-list container text-center" style="margin-top:10%;padding-left:10%" *ngIf=" isAdmin==true;else noAdmin">
+    <div class="pricing-header mx-auto">
+
+        <h1>Cleaning schedule <i class="far fa-clipboard"></i> </h1>
+
+
+
+
+        <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">Client Id</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Adress</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile number</th>
+                    <th scope="col">Instructions</th>
+                    <th class="text-center" scope="col">Edit</th>
+                </tr>
+            </thead>
+
+            <tbody class="text-center ">
+                <!-- *ngFor loop iterates over Client list array and fetch the client's data -->
+                <!-- paginate pipe will add pagination in client's list, it won't show if items are less then 7 -->
+                <tr *ngFor="let profile of clients | paginate: { itemsPerPage: 7, currentPage: p }; let i = index;">
+                    <th scope="row">{{profile.id}}</th>
+                    <td>{{profile.FirstName}}</td>
+                    <td>{{profile.Adress}}</td>
+                    <td>{{profile.Date}}</td>
+                    <td>{{profile.time}}</td>
+                    <td>{{profile.email}}</td>
+                    <td>{{profile.mobileNumber}}</td>
+                    <td>{{profile.Instructions}}</td>
+                    <td class="text-center action-block">
+                        <!-- routerLink="/update-schedule/{{client.$key}}" is refered to { path: 'update-schedule/:id', component: EditclientComponent } in app-routing.moudles.ts -->
+                        <i class="far fa-edit" routerLink="/admin-update-schedule/{{profile.id}}"></i>
+                        <i class="far fa-trash-alt" (click)="onDeleteclient(profile)"></i></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Pagination -->
+        <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+    </div>
+</div>
+
+<!--*********************************************CLIENT SIDE********************************************************************************************************-->
