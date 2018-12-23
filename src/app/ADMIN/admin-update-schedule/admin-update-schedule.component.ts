@@ -78,8 +78,8 @@ export class AdminUpdateScheduleComponent implements OnInit {
     return this.editForm.get('FirstName');
   }
 
-  get Adress() {
-    return this.editForm.get('Adress');
+  get Address() {
+    return this.editForm.get('Address');
   }
   get Date() {
     return this.editForm.get('Date');
@@ -103,7 +103,7 @@ export class AdminUpdateScheduleComponent implements OnInit {
     this.editForm = this.fb.group({
       id: [''],
       FirstName: ['', [Validators.required, Validators.minLength(2)]],
-      Adress: ['', [Validators.required, Validators.minLength(2)]],
+      Address: ['', [Validators.required, Validators.minLength(2)]],
       Date: ['', [Validators.required, Validators.minLength(2)]],
       time: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.minLength(4)]],

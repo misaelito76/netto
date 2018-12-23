@@ -3,6 +3,7 @@ import { NotFoundPageComponent } from './componentes_/not-found-page/not-found-p
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { CrudService } from './services/crud.service';
 import { AuthGuard } from './guards_/auth.guard';
 import { LoginGuard } from './guards_/loginguard';
 import { RouterModule,Routes } from '@angular/router';
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent },
   { path: 'admin-list', component: AdminListComponent, canActivate:[AuthGuard]   },
   { path: 'admin-update-schedule/:id', component: AdminUpdateScheduleComponent },
+  { path: 'update-schedule/:id', component: UpdateScheduleComponent },
 
   {path: '**', component: NotFoundPageComponent}
 ];
@@ -92,7 +94,7 @@ const routes: Routes = [
     NgxPaginationModule  // NGX pagination module
     
   ],
-  providers: [AuthService,UserService, AuthGuard,AngularFireAuth,AngularFirestore],
+  providers: [AuthService,UserService, AuthGuard,AngularFireAuth,AngularFirestore,CrudService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

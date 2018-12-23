@@ -56,7 +56,7 @@ export class NavBarComponent implements OnInit {
   clientsForm() {
     this.clientForm = this.fb.group({
       FirstName: ['', [Validators.required, Validators.minLength(2)]],
-      Adress: ['' ,[Validators.required, Validators.minLength(2)]],
+      Address: ['' ,[Validators.required, Validators.minLength(2)]],
       Date:['' ,[Validators.required, Validators.minLength(2)]],
       time:['' ,[Validators.required]],
       email: ['', [Validators.required, Validators.minLength(4)]],

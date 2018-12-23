@@ -16,7 +16,7 @@
                 <tr class="text-center">
                     <th scope="col">Client Id</th>
                     <th scope="col">First name</th>
-                    <th scope="col">Adress</th>
+                    <th scope="col">Address</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
                     <th scope="col">Email</th>
@@ -26,30 +26,29 @@
                 </tr>
             </thead>
 
-            <tbody class="text-center " *ngFor="let profile of clients ">
-                <!-- *ngFor loop iterates over Client list array and fetch the client's data -->
-                <!-- paginate pipe will add pagination in client's list, it won't show if items are less then 7 -->
-                <tr>
+            <tbody class="text-center " *ngFor="let profile of clients">
+
+                <tr *ngIf="profile.userUid == userUid">
                     <th scope="row">{{profile.id}}</th>
                     <td>{{profile.FirstName}}</td>
-                    <td>{{profile.Adress}}</td>
+                    <td>{{profile.Address}}</td>
                     <td>{{profile.Date}}</td>
                     <td>{{profile.time}}</td>
                     <td>{{profile.email}}</td>
                     <td>{{profile.mobileNumber}}</td>
                     <td>{{profile.Instructions}}</td>
                     <td class="text-center action-block">
-                        <!-- routerLink="/update-schedule/{{client.$key}}" is refered to { path: 'update-schedule/:id', component: EditclientComponent } in app-routing.moudles.ts -->
-                        <i class="far fa-edit" routerLink="/admin-update-schedule/{{profile.id}}"></i>
-                        <i class="far fa-trash-alt" (click)="onDeleteclient(profile)"></i></td>
-                    <td *ngIf="profile.userUid == userUid ; else noAdmin"></td>
+
+                        <i class="far fa-edit" routerLink="/update-schedule/{{profile.id}}"></i>
+                        <i class="far fa-trash-alt" (click)="onDeleteclient(profile.id)"></i></td>
+
                 </tr>
             </tbody>
         </table>
-        <ng-template #noAdmin>
-        </ng-template>
+
 
         <!-- Pagination -->
-        <pagination-controls (pageChange)="p = $event" autoHide="true" responsive="true"></pagination-controls>
+
     </div>
 </div>
+<div>

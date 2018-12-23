@@ -1,12 +1,13 @@
 export interface ClientCleanning {
 
-   id? : string;
+   
    FirstName?: string;
-   Adress?: string;
+   Address?: string;
    email?: string;
    Date?: string;
    time?:number;
    mobileNumber?: Number;
    Instructions?:string;
+   id? : string;
    userUid?: string;
 }

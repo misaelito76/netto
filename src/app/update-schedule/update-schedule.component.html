@@ -16,10 +16,10 @@
                     <p *ngIf="FirstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label><b>Adress:</b></label>
-                    <input type="text" formControlName="Adress" class="form-control" required>
-                    <p *ngIf="Adress.touched && Adress.invalid" class="error"><sup>*</sup>Please enter at least adress</p>
-                    <p *ngIf="Adress.errors?.minlength" class="error"><sup>*</sup>Adress shouldn't be less than 6 words</p>
+                    <label><b>Address:</b></label>
+                    <input type="text" formControlName="Address" class="form-control" required>
+                    <p *ngIf="Address.touched && Address.invalid" class="error"><sup>*</sup>Please enter at least Address</p>
+                    <p *ngIf="Address.errors?.minlength" class="error"><sup>*</sup>Address shouldn't be less than 6 words</p>
                 </div>
             </div>
             <div class="row">
@@ -41,7 +41,7 @@
                 <div class="col-md-6 mb-3">
                     <label><b>Email:</b></label>
                     <input type="email" formControlName="email" class="form-control" required>
-                    <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please enter an email adress</p>
+                    <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please enter an email Address</p>
                     <p *ngIf="email.errors?.minlength" class="error"><sup>*</sup> Email shouldn't be less than 2 words</p>
                 </div>
 

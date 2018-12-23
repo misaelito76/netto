@@ -5,6 +5,9 @@ import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ClientCleanning } from '../shared/clientCleanning';
+import {   Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-add-client',
   templateUrl: './schedule-cleaning.component.html',
@@ -21,9 +24,10 @@ export class AddClientComponent implements OnInit {
     public fb: FormBuilder,       // Form Builder service for Reactive forms
     public toastr: ToastrService  // Toastr service for alert message
   ) { }
+  @Input() userUid: string;
   public clients: ClientCleanning[];
   public isAdmin: any = null;
-  public userUid: string = null;
+ 
   public selectedClient: ClientCleanning;
   public First: string;
   public Email: string;
@@ -56,7 +60,7 @@ export class AddClientComponent implements OnInit {
   clientsForm() {
     this.clientForm = this.fb.group({
       FirstName: ['', [Validators.required, Validators.minLength(2)]],
-      Adress: ['' ,[Validators.required, Validators.minLength(6)]],
+      Address: ['' ,[Validators.required, Validators.minLength(6)]],
       Date:['' ,[Validators.required]] ,
       time:['' ,[Validators.required]],
       email: ['', [Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
@@ -71,8 +75,8 @@ export class AddClientComponent implements OnInit {
   }
   
 
-  get Adress() {
-    return this.clientForm.get('Adress');
+  get Address() {
+    return this.clientForm.get('Address');
   }  
   get Date() {
     return this.clientForm.get('Date');
@@ -97,12 +101,27 @@ export class AddClientComponent implements OnInit {
     this.clientForm.reset();
   }  
  
-  submitclientData() {
+  submitclientData(clientForm: NgForm): void {
+ if (clientForm.value.id == null) {
+     clientForm.value.userUid = this.userUid;
     this.crudApi.addclient(this.clientForm.value); // Submit client data using CRUD API
-    this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!'); // Show success message when data is successfully submited
-    this.ResetForm();  // Reset form when clicked on reset button
-    this.router.navigate(['profile']);  
+    this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!')}
+    else {
+      // Update
+      this.crudApi.updateclient(clientForm.value);
+      this.router.navigate(['profile']);
+    } 
    };
+   /*submitclientData(clientForm: NgForm): void {
+    if (clientForm.value.id == null) {
+      // New 
+      clientForm.value.userUid = this.userUid;
+      this.crudApi.addclient(clientForm.value);
+      this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!');
+    } else {
+      // Update
+      this.crudApi.updateclient(clientForm.value);
+      this.router.navigate(['profile']);*/
+
    
- 
-}
+    }

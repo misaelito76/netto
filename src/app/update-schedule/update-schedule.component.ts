@@ -35,8 +35,8 @@ export class UpdateScheduleComponent implements OnInit {
     return this.editForm.get('FirstName');
   }
 
-  get Adress() {
-    return this.editForm.get('Adress');
+  get Address() {
+    return this.editForm.get('Address');
   }
   get Date() {
     return this.editForm.get('Date');
@@ -59,7 +59,7 @@ export class UpdateScheduleComponent implements OnInit {
   updateScheduleData() {
     this.editForm = this.fb.group({
       FirstName: ['', [Validators.required, Validators.minLength(2)]],
-      Adress: ['' ,[Validators.required, Validators.minLength(6)]],
+      Address: ['' ,[Validators.required, Validators.minLength(6)]],
       Date:['' ,[Validators.required]] ,
       time:['' ,[Validators.required]],
       email: ['', [Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],

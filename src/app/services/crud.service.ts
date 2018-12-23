@@ -17,6 +17,9 @@ export class CrudService {
   private clients: Observable<ClientCleanning[]>;
   private addDoc: AngularFirestoreDocument<ClientCleanning>;
   private client: Observable<ClientCleanning>;
+
+  
+  
   public selectedClient: ClientCleanning = {
     id: null
   };
@@ -65,7 +68,7 @@ export class CrudService {
   }
   updateclient(client: ClientCleanning): void {
     let idclient = client.id;
-    this.addDoc = this.afs.doc<ClientCleanning>(`clients/${idclient}`);
+    this.addDoc = this.afs.doc(`clients/${client.id}`);
     this.addDoc.update(client);
   }
   deleteclient(idclient: string): void {
