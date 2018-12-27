@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container fixed-bottom mat-elevation-z20">
+<mat-sidenav-container class="sidenav-container  mat-elevation-z20 fixed-bottom">
     <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
@@ -8,8 +8,8 @@
             <a mat-list-item routerLink="/my-schedule" class="text-white register">My Orders</a>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content class="mat-elevation-z8">
-        <mat-toolbar color="primary">
+    <mat-sidenav-content>
+        <mat-toolbar class="mat-elevation-z8  bottom" color="primary">
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
@@ -18,7 +18,7 @@
             <span class="example-fill-remaining-space"></span>
 
             <a class="a" routerLink="/login" *ngIf="!isLogin">
-                <span class="text-white"> Login</span>
+                <span class="text-white  "> Login</span>
             </a>
             <span class="example-fill-remaining-space1"></span>
 
@@ -32,8 +32,8 @@
 
 
 
-            <a class="nav-item register " style="cursor: pointer;" *ngIf="isLogin">
-                <a class="text-white" (click)="logout()">Logout</a>
+            <a class="nav-item register mat-h2" style="cursor: pointer;" *ngIf="isLogin">
+                <a class="text-white mat-body mat-body-1" (click)="logout()">Logout</a>
             </a>
 
         </mat-toolbar>
