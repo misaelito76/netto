@@ -4,19 +4,19 @@
 
     <div @slide class="row user-details">
         <div class="col-12 ">
-            <img src="{{img}} " class="rounded-circle img-thumbnail" style="width:10%" alt="profile ">
+            <img src="{{img}} " class="rounded-circle img-thumbnail mat-elevation-z18" style="width:10%" alt="profile ">
             <h5> {{Email}}</h5>
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
-            <div class="card">
-                <br>
-                <h1 class="animated">Schedule <i class="far fa-clipboard  animated infinite bounce delay-2s"></i> </h1>
 
-                <div class="row justify-content-center align-items-center">
 
+            <h1 class="">Schedule <i class="far fa-clipboard  animated infinite bounce delay-2s"></i> </h1>
+
+            <div class="row justify-content-center align-items-center">
+                <div class="card mat-elevation-z8"><br>
                     <form [formGroup]="clientForm" (ngSubmit)="submitclientData(clientForm)">
 
                         <div class="row">
@@ -72,14 +72,22 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <button type="button" class="btn btn-danger gap-right" (click)="ResetForm()">Reset</button>
-                            <button type="submit" class="btn btn-primary" [disabled]="!clientForm.valid">Create </button>
+                            <div class="row">
+                                <div class="col-12">
+                                    <button mat-raised-button color="warn" mat-raised-button class="mat-elevation-z8" color="warn" (click)="ResetForm()">Reset</button>
+
+
+
+                                    <button type="submit" mat-raised-button class="mat-elevation-z8" color="primary" [disabled]="!clientForm.valid">Create </button>
+                                </div>
+
+                            </div>
                         </div>
                     </form>
-                </div>
-                <br><br>
-                <div class=" text-center">
-                    <p class="custom-text">A Company created for <strong>Detailed Residential and commercial cleaning</strong> Based in <strong>Montreal,Qc Canada</strong></p>
+                    <br><br>
+                    <div class="card-footer text-center">
+                        <p class="custom-text">A Company created for <strong>Detailed Residential and commercial cleaning</strong> Based in <strong>Montreal,Qc Canada</strong></p>
+                    </div>
                 </div>
             </div>
         </div>

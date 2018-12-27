@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container fixed-bottom mat-elevation-z20">
     <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
@@ -8,12 +8,12 @@
             <a mat-list-item routerLink="/my-schedule" class="text-white register">My Orders</a>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="mat-elevation-z8">
         <mat-toolbar color="primary">
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-            <span> <img class="user-image" src="/assets/Netto.png"> Netto</span>
+            <span> <img class="user-image  " src="/assets/Netto.png"> Netto</span>
 
             <span class="example-fill-remaining-space"></span>
 

@@ -27,7 +27,8 @@ import {MatButtonModule,
    MatIconModule,
     MatListModule,
     MatDatepickerModule,
-    MatNativeDateModule, 
+    MatNativeDateModule,
+    MatProgressBarModule
   
   } from '@angular/material';
 
@@ -106,6 +107,7 @@ const routes: Routes = [
             MatDatepickerModule,
           
             MatNativeDateModule,
+            MatProgressBarModule,
         
 
        AngularFireAuthModule,     

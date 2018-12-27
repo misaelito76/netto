@@ -11,8 +11,23 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor(private router: Router, private authService: AuthService, private storage: AngularFireStorage) { }
+progress=0;
+timer;
+  constructor(private router: Router, private authService: AuthService, private storage: AngularFireStorage,
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ) {  this.timer = setInterval(()=>{
+      this.progress++;
+      if (this.progress == 100) clearInterval(this.timer);
+    },20); }
   @ViewChild('imageUser') inputImageUser: ElementRef;
 
   public email: string = '';
@@ -21,8 +36,10 @@ export class RegisterComponent implements OnInit {
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
 
+
   ngOnInit() {
   }
+
 
   onUpload(e) {
  

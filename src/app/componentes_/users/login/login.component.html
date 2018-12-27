@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
                 <div class="card_login">
-                    <div class="card">
+                    <div class="card mat-elevation-z8">
                         <div class="card-body text-center">
                             <form (submit)="onLogin()">
-                                <h1 class="h3 mb-3 font-weight-normal"> <img class="user-image" src="/assets/Netto.png"> Login</h1>
+                                <h1 class="h3 mb-3 font-weight-normal "> <img class="user-image" src="/assets/Netto.png"> Login</h1>
 
                                 <mat-form-field class="col-sm-12">
                                     <input matInput type="email" placeholder="Email:" name="email" [(ngModel)]="email">
@@ -17,17 +17,17 @@
                                     <input matInput type="password" placeholder="Password:" name="password" [(ngModel)]="password">
                                 </mat-form-field>
 
-                                <button mat-raised-button color="primary" type="submit" class="btn btn-block bg-warn ">LOGIN</button>
-                                <hr>
+                                <button mat-raised-button color="primary" type="submit" class="btn btn-block bg-warn mat-elevation-z8">LOGIN</button>
+                                <hr class="mat-elevation-z8">
                                 <a routerLink="/register" class="form-control">Are you new ?</a>
 
                                 <div class="form-group">
-                                    <button mat-raised-button color="primary" class="btn btn-block btn-social btn-facebook" (click)="onLoginFacebook()">
-                    <span class="fab fa-facebook"></span>
+                                    <button mat-raised-button color="primary" class="btn btn-block btn-social btn-facebook mat-elevation-z8" (click)="onLoginFacebook()">
+                    <span class="fab fa-facebook-f mat-elevation-z8"></span>
                     FACEBOOK
                   </button>
-                                    <button mat-raised-button color="warn" class="btn btn-block btn-social btn-google" (click)="onLoginGoogle()">
-                    <span class="fab fa-goodreads-g"></span>
+                                    <button mat-raised-button color="warn" class="btn btn-block btn-social btn-google mat-elevation-z8" (click)="onLoginGoogle()">
+                    <span class="fab fa-goodreads-g mat-elevation-z8"></span>
                     GOOGLE
                   </button>
                                 </div>
