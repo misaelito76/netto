@@ -2,62 +2,108 @@ import { AuthService } from './../services/auth.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CrudService } from '../services/crud.service';
-import { ActivatedRoute, Router } from "@angular/router"; // ActivatedRoue is used to get the current associated components information.
-import { Location } from '@angular/common';  // Location service is used to go back to previous component
+import { ActivatedRoute, Router } from "@angular/router"; 
+import { Location } from '@angular/common';  
 import { ToastrService } from 'ngx-toastr';
-
-import { Observable } from 'rxjs/internal/Observable';
+import {fade,slide} from '../../animations';
+import { ClientCleanning } from '../shared/clientCleanning';
 @Component({
   selector: 'app-update-schedule',
   templateUrl: './update-schedule.component.html',
-  styleUrls: ['./update-schedule.component.css']
+  styleUrls: ['./update-schedule.component.css'],
+  animations:[
+    fade,
+    slide
+  ]
 })
 
 export class UpdateScheduleComponent implements OnInit {
-  editForm: FormGroup;  // Define FormGrouupdate-schedule's edit form
-   clientForm: FormGroup
+  
+  public clientForm: FormGroup;
+  public clients: ClientCleanning[];
+  public isAdmin: any = null;
+  public userUid: string = null;
+  public selectedClient: ClientCleanning;
+  public First: string;
+  public Email: string;
+  public Mobile: string;
+  public img: string;
+
   constructor(
    public authService:AuthService,
-    private crudApi: CrudService,       // Inject CRUD API in constructor
-    private fb: FormBuilder,            // Inject Form Builder service for Reactive forms
-    private location: Location,         // Location service to go back to previous component
-    private actRoute: ActivatedRoute,   // Activated route to get the current component's inforamation
-    private router: Router,             // Router service to navigate to specific component
-    private toastr: ToastrService       // Toastr service for alert message
+    private crudApi: CrudService,    
+    private fb: FormBuilder,          
+    private location: Location,        
+    private actRoute: ActivatedRoute,   
+    private router: Router,             
+    private toastr: ToastrService       
   ){ }
 
   ngOnInit() {
-    this.updateForm()
+    this.getCurrentUser();
+
+    this.updateScheduleData();   
+    const id = this.actRoute.snapshot.paramMap.get('id');  
+    this.crudApi.getOneclient(id).subscribe(data => {
+      this.clientForm.setValue(data) 
+    })
+
+
+  }
+  
+  getCurrentUser() {
+    this.authService.isAuth().subscribe(auth => {
+      if (auth) {
+        this.userUid = auth.uid;
+        this.Email = auth.email;
+
+        this.img = auth.photoURL;
+
+        this.authService.isUserAdmin(this.userUid).subscribe(userRole => {
+          this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
+          // this.isAdmin = true;
+        })
+      }
+    })
   }
 
-  // Accessing form control using getters
+  
+  get id() {
+    return this.clientForm.get('id');
+  }
+
   get FirstName() {
-    return this.editForm.get('FirstName');
+    return this.clientForm.get('FirstName');
   }
 
   get Address() {
-    return this.editForm.get('Address');
+    return this.clientForm.get('Address');
   }
   get Date() {
-    return this.editForm.get('Date');
+    return this.clientForm.get('Date');
   }
   get email() {
-    return this.editForm.get('email');
+    return this.clientForm.get('email');
   }
   get time() {
-    return this.editForm.get('time');
+    return this.clientForm.get('time');
   }
 
   get mobileNumber() {
-    return this.editForm.get('mobileNumber');
+    return this.clientForm.get('mobileNumber');
   }  
   get Instructions() {
-    return this.editForm.get('Instructions');
+    return this.clientForm.get('Instructions');
   }  
+  get useruid() {
+    return this.clientForm.get('userUid')
+  }
 
-  // Contains Reactive Form logic
+
   updateScheduleData() {
-    this.editForm = this.fb.group({
+    this.clientForm = this.fb.group({
+      id:[''],
+      userUid:[''],
       FirstName: ['', [Validators.required, Validators.minLength(2)]],
       Address: ['' ,[Validators.required, Validators.minLength(6)]],
       Date:['' ,[Validators.required]] ,
@@ -68,19 +114,19 @@ export class UpdateScheduleComponent implements OnInit {
     })
   }
 
-  // Go back to previous component
+
   goBack() {
     this.location.back();
   }
 
-  // Below methods fire when somebody click on submit button
+
   updateForm(){
-    this.crudApi.updateclient(this.editForm.value);       // Upupdate-schedule data using CRUD API
-    this.toastr.success(this.editForm.controls['FirstName'].value + ' updated successfully');   // Show succes message when data is successfully submited
-    this.router.navigate(['my-schedule']);               // Navigatupdate-schedule's list page update-schedule data is updated
+    this.crudApi.updateclient(this.clientForm.value);       
+    this.toastr.success(this.clientForm.controls['FirstName'].value + ' updated successfully');   
+    this.router.navigate(['profile']);           
   }
   ResetForm() {
-    this.editForm.reset();
+    this.clientForm.reset();
   } 
 
 }

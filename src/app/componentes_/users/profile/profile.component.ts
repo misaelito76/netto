@@ -1,24 +1,21 @@
-
-
   import { Component, OnInit } from '@angular/core';
   import { AuthService } from '../../../services/auth.service';
-  import { AngularFireAuth } from '@angular/fire/auth';
-  import { UserInterface } from '../../../shared/user';
-  import { NgForm, FormGroup } from '@angular/forms';
+  import {  FormGroup } from '@angular/forms';
   import { CrudService } from '../../../services/crud.service';  // CRUD API service class
   import { ClientCleanning } from '../../../shared/clientCleanning';   // client interface class for Data types.
   import { ToastrService } from 'ngx-toastr';
   import { Router } from '@angular/router';
-
+  import {fade,slide} from '../../../../animations'
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  animations:[
+    fade,
+    slide
+  ]
 })
 export class ProfileComponent implements OnInit {
-
-
-
 
     public clientForm: FormGroup;
     constructor(
@@ -87,9 +84,9 @@ export class ProfileComponent implements OnInit {
       this.clientForm.reset();
     }
     submitclientData() {
-      this.crudApi.addclient(this.clientForm.value); // Submit client data using CRUD API
-      this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!'); // Show success message when data is successfully submited
-      this.ResetForm();  // Reset form when clicked on reset button
+      this.crudApi.addclient(this.clientForm.value); 
+      this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!');
+      this.ResetForm();  
       this.router.navigate(['admin-list']);
     };
   

@@ -5,23 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "nnnnnnnnnnnnnnnnn-nnnnnnnnnnn",
-    authDomain: "nnnnnnnnnnnnnn-nnnnnnnnnnnn.firebaseapp.com",
-    databaseURL: "https://nnnnnnnnnnnnnnnn-nnnnnnnnnnnnn.firebaseio.com",
-    projectId: "nnnnnnnnnnnnn-nnnnnnnnnnnn",
-    storageBucket: "nnnnnnnnnnnnn-nnnnnnnn.nnnnnnnn.com",
-    messagingSenderId: "nnnnnnnnnnnnn"
-
+    apiKey: "AIzaSyA6t4EsRrNcBwKGS5YhbIHRA-HmmQxhcfA",
+    authDomain: "netto-a5a4f.firebaseapp.com",
+    databaseURL: "https://netto-a5a4f.firebaseio.com",
+    projectId: "netto-a5a4f",
+    storageBucket: "netto-a5a4f.appspot.com",
+    messagingSenderId: "291519147213"
 
   }  
 };
 
-
-
-/*
- * In development mode, to ignore zone related error stack frames such as
- * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
- * import the following file, but please comment it out in production mode
- * because it will have performance impact when throw error
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.

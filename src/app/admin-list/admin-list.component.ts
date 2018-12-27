@@ -1,10 +1,8 @@
 
-
+import {fade,slide} from '../../animations'
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { UserInterface } from '../shared/user';
-import { NgForm, FormGroup } from '@angular/forms';
+import {  FormGroup } from '@angular/forms';
 import { CrudService } from '../services/crud.service';  // CRUD API service class
 import { ClientCleanning } from '../shared/clientCleanning';   // client interface class for Data types.
 import { ToastrService } from 'ngx-toastr';
@@ -13,15 +11,25 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-list',
   templateUrl: './admin-list.component.html',
-  styleUrls: ['./admin-list.component.css']
+  styleUrls: ['./admin-list.component.css'],
+ 
+animations:[
+  fade,
+  slide
+]
+
+
 })
 export class AdminListComponent implements OnInit {
   public clientForm: FormGroup;
+   //Busqueda
+   public searchText: string;
   constructor(
     private authService: AuthService,
     private router: Router,
     public crudApi: CrudService, // Inject client CRUD services in constructor.
     public toastr: ToastrService // Toastr service for alert message
+    
   ) { }
 
   public clients: ClientCleanning[];
@@ -52,7 +60,7 @@ export class AdminListComponent implements OnInit {
 
         this.authService.isUserAdmin(this.userUid).subscribe(userRole => {
           this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
-          // this.isAdmin = true;
+          
         })
       }
     })
@@ -83,10 +91,10 @@ export class AdminListComponent implements OnInit {
     this.clientForm.reset();
   }
   submitclientData() {
-    this.crudApi.addclient(this.clientForm.value); // Submit client data using CRUD API
-    this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!'); // Show success message when data is successfully submited
-    this.ResetForm();  // Reset form when clicked on reset button
-    this.router.navigate(['admin-list']);
+    this.crudApi.addclient(this.clientForm.value);
+    this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!'); 
+    this.ResetForm(); 
+    this.router.navigate(['profile']);
   };
 
 }

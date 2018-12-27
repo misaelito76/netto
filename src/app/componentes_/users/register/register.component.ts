@@ -5,8 +5,6 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -27,7 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onUpload(e) {
-    // console.log('subir', e.target.files[0]);
+ 
     const id = Math.random().toString(36).substring(2);
     const file = e.target.files[0];
     const filePath = `uploads/profile_${id}`;

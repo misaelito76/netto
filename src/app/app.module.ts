@@ -1,17 +1,17 @@
-import { FormsModule} from '@angular/forms';
-import { NotFoundPageComponent } from './componentes_/not-found-page/not-found-page.component';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+//Services
+
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { CrudService } from './services/crud.service';
 import { AuthGuard } from './guards_/auth.guard';
-import { LoginGuard } from './guards_/loginguard';
+//Modules
+
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FormsModule} from '@angular/forms';
 import { RouterModule,Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AddClientComponent } from './schedule-cleaning/schedule-cleaning.component';
-import { UpdateScheduleComponent } from './update-schedule/update-schedule.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -20,19 +20,39 @@ import { AppRoutingModule } from './/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {MatInputModule,} from '@angular/material/input';
+import {MatButtonModule,
+  MatToolbarModule,
+  MatSidenavModule,
+   MatIconModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule, 
+  
+  } from '@angular/material';
+
+
+import {MatDatepicker} from '@angular/material/datepicker';
+//Components
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NotFoundPageComponent } from './componentes_/not-found-page/not-found-page.component';
+import { AddClientComponent } from './schedule-cleaning/schedule-cleaning.component';
+import { UpdateScheduleComponent } from './update-schedule/update-schedule.component';
+import { MyScheduleComponent } from './my-schedule/my-schedule.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import{LoginComponent} from './componentes_/users/login/login.component';
 import{RegisterComponent} from './componentes_/users/register/register.component'
 import{AdminListComponent}from './admin-list/admin-list.component';
-import { AdminUpdateScheduleComponent } from './ADMIN/admin-update-schedule/admin-update-schedule.component'
-import{ProfileComponent} from './componentes_/users/profile/profile.component'
+import{ProfileComponent} from './componentes_/users/profile/profile.component';
+//Firebase
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { MyScheduleComponent } from './my-schedule/my-schedule.component';
-
+import { GrdFilterPipe } from './services/search.service';
+import { ComponentNameComponent } from './component-name/component-name.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 const routes: Routes = [
@@ -41,19 +61,13 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  { path: 'schedule-cleaning', component: AddClientComponent},
-  { path: 'my-schedule', component: MyScheduleComponent},
-  {path: 'profile', component: ProfileComponent },
+  { path: 'schedule-cleaning', component: AddClientComponent, canActivate:[AuthGuard]},
+  { path: 'my-schedule', component: MyScheduleComponent, canActivate:[AuthGuard]},
+  {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard] },
   { path: 'admin-list', component: AdminListComponent, canActivate:[AuthGuard]   },
-  { path: 'admin-update-schedule/:id', component: AdminUpdateScheduleComponent },
-  { path: 'update-schedule/:id', component: UpdateScheduleComponent },
-
+  { path: 'update-schedule/:id', component: UpdateScheduleComponent, canActivate:[AuthGuard]   },
   {path: '**', component: NotFoundPageComponent}
 ];
-
-// Import RouterModule and inject routes array in it and dont forget to export the RouterModule
-
-
 
 @NgModule({
   declarations: [
@@ -66,10 +80,10 @@ const routes: Routes = [
     NotFoundPageComponent,
     HomeComponent,
     ProfileComponent,
-    AdminUpdateScheduleComponent,
     ProfileComponent,
-    NavBarComponent,
     MyScheduleComponent,
+    GrdFilterPipe,
+    ComponentNameComponent
 
     
     
@@ -82,7 +96,17 @@ const routes: Routes = [
             ReactiveFormsModule,        // Reactive forms module
             AppRoutingModule,           // Main routing module
             BrowserAnimationsModule,    // Required animations module for Toastr
-            FormsModule,AngularFireStorageModule,
+            FormsModule,
+            AngularFireStorageModule,
+            MatInputModule,
+            MatButtonModule,
+            MatToolbarModule,
+            MatSidenavModule,
+            MatFormFieldModule,
+            MatDatepickerModule,
+          
+            MatNativeDateModule,
+        
 
        AngularFireAuthModule,     
        ToastrModule.forRoot({
@@ -91,10 +115,19 @@ const routes: Routes = [
        preventDuplicates: true,      
     }),
 
-    NgxPaginationModule  // NGX pagination module
+    NgxPaginationModule,
+
+    LayoutModule,
+
+    MatIconModule,
+
+    MatListModule  // NGX pagination module
     
   ],
-  providers: [AuthService,UserService, AuthGuard,AngularFireAuth,AngularFirestore,CrudService],
+  exports:[MatInputModule,MatButtonModule,MatToolbarModule,MatDatepickerModule
+
+  ],
+  providers: [AuthService,UserService, AuthGuard,AngularFireAuth,AngularFirestore,CrudService,MatSidenavModule],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -7,11 +7,14 @@ import { AuthService } from '../services/auth.service';
 import { ClientCleanning } from '../shared/clientCleanning';
 import {   Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
+import {fade,slide} from '../../animations'
 @Component({
   selector: 'app-add-client',
   templateUrl: './schedule-cleaning.component.html',
-  styleUrls: ['./schedule-cleaning.component.scss']
+  styleUrls: ['./schedule-cleaning.component.scss'],
+  animations:[
+    slide
+  ]
 })
 
 export class AddClientComponent implements OnInit {
@@ -104,8 +107,10 @@ export class AddClientComponent implements OnInit {
   submitclientData(clientForm: NgForm): void {
  if (clientForm.value.id == null) {
      clientForm.value.userUid = this.userUid;
-    this.crudApi.addclient(this.clientForm.value); // Submit client data using CRUD API
+    this.crudApi.addclient(this.clientForm.value);
+    this.router.navigate(['profile']); // Submit client data using CRUD API
     this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!')}
+    
     else {
       // Update
       this.crudApi.updateclient(clientForm.value);

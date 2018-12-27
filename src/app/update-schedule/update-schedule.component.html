@@ -1,79 +1,87 @@
-<div class="container text-center">
-    <br><br> <br><br><br><br>
-    <h1 class="h2 ">Update schedule <i class="far fa-clipboard"></i> </h1>
-
-    <br><br>
-    <div class="row justify-content-center align-items-center">
-        <!-- Client
-                    form -->
-        <form [formGroup]="editForm" (ngSubmit)="updateForm()" novalidate>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label><b>Name:</b></label>
-                    <input type="text" formControlName="FirstName" class="form-control" required>
-                    <p *ngIf="FirstName.touched && FirstName.invalid" class="error"><sup>*</sup>Please enter at least first name</p>
-                    <p *ngIf="FirstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label><b>Address:</b></label>
-                    <input type="text" formControlName="Address" class="form-control" required>
-                    <p *ngIf="Address.touched && Address.invalid" class="error"><sup>*</sup>Please enter at least Address</p>
-                    <p *ngIf="Address.errors?.minlength" class="error"><sup>*</sup>Address shouldn't be less than 6 words</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label><b>Date:</b></label>
-
-                    <input type="date" formControlName="Date" class="form-control text-center" required>
-                    <p *ngIf="Date.touched && Date.invalid" class="error"><sup>*</sup>Please enter a correct date</p>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label><b>Time:</b></label>
-                    <input type="time" formControlName="time" class="form-control text-center" required>
-                    <p *ngIf="time.touched && time.invalid" class="error"><sup>*</sup>Please set the time</p>
-
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label><b>Email:</b></label>
-                    <input type="email" formControlName="email" class="form-control" required>
-                    <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please enter an email Address</p>
-                    <p *ngIf="email.errors?.minlength" class="error"><sup>*</sup> Email shouldn't be less than 2 words</p>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label><b>Mobile:</b></label>
-                    <input type="text" formControlName="mobileNumber" class="form-control" required>
-                    <p *ngIf="mobileNumber.touched && mobileNumber.invalid" class="error"><sup>*</sup>Please provide contact number
-                    </p>
-                    <p *ngIf="mobileNumber.errors?.pattern" class="error"><sup>*</sup>Use numbers only number
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 mb-4">
-                    <label><b>Instructions:</b></label>
-                    <textarea rows="2" cols="20" type="text" formControlName="Instructions" class="form-control"></textarea>
-                    <p *ngIf="Instructions.touched && Instructions.invalid" class="error"><sup>*</sup>Please provide the instructions</p>
-                    <p *ngIf="Instructions.errors?.minlength" class="error"><sup>*</sup>Instructions shouldn't be less than 10 words</p>
-                </div>
-            </div>
-
-            <div class="form-group text-center">
-                <button type="button" class="btn btn-danger gap-right" (click)="ResetForm()">Reset</button>
-                <button type="submit" class="btn btn-primary" [disabled]="!editForm.valid">Update</button>
-            </div>
-
-        </form>
-
+<div class=" container text-center">
+    <br>
+    <div class="row user-details">
+        <div class="col-12 ">
+            <img src="{{img}} " class="rounded-circle img-thumbnail" style="width:10%" alt="profile ">
+            <h5> {{Email}}</h5>
+        </div>
     </div>
-    <br><br><br>
-    <div class=" text-center">
-        <p class="custom-text">A Company created for <strong>Detailed Residential and commercial cleaning</strong> Based in <strong>Montreal,Qc Canada</strong></p>
+    <div class="card col-xs-12 col-sm-8 col-md-6 mx-auto">
+        <br>
+        <h1 @fade @slide class="h2 ">Update schedule <i class="far fa-clipboard"></i> </h1>
+
+        <br><br>
+        <div class="row justify-content-center align-items-center">
+
+            <form @fade [formGroup]="clientForm" (ngSubmit)="updateForm()" novalidate>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label><b>Name:</b></label>
+                        <input type="text" formControlName="FirstName" class="form-control" required>
+                        <p *ngIf="FirstName.touched && FirstName.invalid" class="error"><sup>*</sup>Please enter at least first name</p>
+                        <p *ngIf="FirstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label><b>Address:</b></label>
+                        <input type="text" formControlName="Address" class="form-control" required>
+                        <p *ngIf="Address.touched && Address.invalid" class="error"><sup>*</sup>Please enter at least Address</p>
+                        <p *ngIf="Address.errors?.minlength" class="error"><sup>*</sup>Address shouldn't be less than 6 words</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label><b>Date:</b></label>
+
+                        <input type="date" formControlName="Date" class="form-control text-center" required>
+                        <p *ngIf="Date.touched && Date.invalid" class="error"><sup>*</sup>Please enter a correct date</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label><b>Time:</b></label>
+                        <input type="time" formControlName="time" class="form-control text-center" required>
+                        <p *ngIf="time.touched && time.invalid" class="error"><sup>*</sup>Please set the time</p>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label><b>Email:</b></label>
+                        <input type="email" formControlName="email" class="form-control" required>
+                        <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please enter an email Address</p>
+                        <p *ngIf="email.errors?.minlength" class="error"><sup>*</sup> Email shouldn't be less than 2 words</p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label><b>Mobile:</b></label>
+                        <input type="text" formControlName="mobileNumber" class="form-control" required>
+                        <p *ngIf="mobileNumber.touched && mobileNumber.invalid" class="error"><sup>*</sup>Please provide contact number
+                        </p>
+                        <p *ngIf="mobileNumber.errors?.pattern" class="error"><sup>*</sup>Use numbers only number
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <label><b>Instructions:</b></label>
+                        <textarea rows="2" cols="20" type="text" formControlName="Instructions" class="form-control"></textarea>
+                        <p *ngIf="Instructions.touched && Instructions.invalid" class="error"><sup>*</sup>Please provide the instructions</p>
+                        <p *ngIf="Instructions.errors?.minlength" class="error"><sup>*</sup>Instructions shouldn't be less than 10 words</p>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-danger gap-right" (click)="ResetForm()">Reset</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!clientForm.valid">Update</button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class=" text-center">
+            <p class="custom-text">A Company created for <strong>Detailed Residential and commercial cleaning</strong> Based in <strong>Montreal,Qc Canada</strong></p>
+        </div>
     </div>
 </div>

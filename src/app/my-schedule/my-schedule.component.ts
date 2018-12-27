@@ -1,19 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { UserInterface } from '../shared/user';
-
-
+import { AuthService } from '../services/auth.service'
 import { ClientCleanning } from '../shared/clientCleanning';   // client interface class for Data types.
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
 import { CrudService } from '../services/crud.service';    // CRUD services API
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; // Reactive form services
-
-
-
-
+import {  FormGroup } from '@angular/forms'; // Reactive form services
 
 @Component({
   selector: 'app-my-schedule',
@@ -38,13 +29,10 @@ export class MyScheduleComponent implements OnInit {
   public Mobile: string;
   public img: string;
 
-
   ngOnInit() {
-
 
     this.getListClients();
     this.getCurrentUser();
-
   }
 
   getCurrentUser() {
@@ -63,8 +51,6 @@ export class MyScheduleComponent implements OnInit {
     })
   }
 
-
-
   getListClients() {
     this.crudApi.getAllclients()
       .subscribe(clients => {
@@ -74,8 +60,8 @@ export class MyScheduleComponent implements OnInit {
   }
 
   onDeleteclient(idClient: string): void {
-    const confirmacion = confirm('Are you sure?');
-    if (confirmacion) {
+    const confirmation = confirm('Are you sure?');
+    if (confirmation) {
       this.crudApi.deleteclient(idClient);
     }
   }
@@ -91,7 +77,7 @@ export class MyScheduleComponent implements OnInit {
     this.crudApi.addclient(this.clientForm.value); // Submit client data using CRUD API
     this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!'); // Show success message when data is successfully submited
     this.ResetForm();  // Reset form when clicked on reset button
-    this.router.navigate(['admin-list']);
+    this.router.navigate(['profile']);
   };
 
 }

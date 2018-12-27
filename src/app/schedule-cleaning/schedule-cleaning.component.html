@@ -1,104 +1,87 @@
 <div class="container text-center">
 
-
-    <br><br><br>
     <br>
-    <div class="row user-details">
-        <div class="col-12">
-            <img src="{{img}} " class="rounded-circle img-thumbnail" style="width:6%" alt="profile ">
-            <h5 *ngIf="providerId != 'password'"> {{Email}}</h5>
+
+    <div @slide class="row user-details">
+        <div class="col-12 ">
+            <img src="{{img}} " class="rounded-circle img-thumbnail" style="width:10%" alt="profile ">
+            <h5> {{Email}}</h5>
         </div>
     </div>
-    <h1 class="h2 ">Schedule <i class="far fa-clipboard"></i> </h1>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
+            <div class="card">
+                <br>
+                <h1 class="animated">Schedule <i class="far fa-clipboard  animated infinite bounce delay-2s"></i> </h1>
+
+                <div class="row justify-content-center align-items-center">
+
+                    <form [formGroup]="clientForm" (ngSubmit)="submitclientData(clientForm)">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <mat-form-field class="col-sm-12">
+                                    <input matInput type="FirstName" placeholder="Full Name:" formControlName="FirstName" FormControlName="FirstName">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <mat-form-field class="col-sm-12">
+                                    <input matInput type="Address" placeholder="Address:" formControlName="Address" FormControlName="Address">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker" formControlName="Date" placeholder="Choose a date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
 
 
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <mat-form-field class="col-sm-12">
+                                    <input matInput type="time" placeholder="Time:" formControlName="time" FormControlName="time">
+                                </mat-form-field>
+                            </div>
 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <mat-form-field class="col-sm-12">
+                                    <input matInput type="email" placeholder="Email:" formControlName="email" FormControlName="email">
+                                </mat-form-field>
+                            </div>
 
-    <div class="row justify-content-center align-items-center">
+                            <div class="col-md-6 mb-3">
+                                <mat-form-field class="col-sm-12">
+                                    <input matInput type="mobileNumber" placeholder="Mobile Number:" formControlName="mobileNumber" FormControlName="mobileNumber">
+                                </mat-form-field>
+                            </div>
+                        </div>
 
-        <!-- Student form -->
-        <form [formGroup]="clientForm" (ngSubmit)="submitclientData(clientForm)">
+                        <div class="row">
+                            <div class="col-md-12 mb-4">
+                                <mat-form-field class="col-sm-12">
+                                    <textarea matInput type="Instructions" placeholder="Instructions:" formControlName="Instructions" FormControlName="Instructions"></textarea>
+                                </mat-form-field>
+                            </div>
+                        </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label><b>Name:</b></label>
-                    <input type="text" formControlName="FirstName" class="form-control" [(ngModel)]="this.crudApi.selectedClient.FirstName" required>
-                    <p *ngIf="FirstName.touched && FirstName.invalid" class="error"><sup>*</sup>Please enter at least first name</p>
-                    <p *ngIf="FirstName.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 words</p>
+                        <div class="form-group text-center">
+                            <button type="button" class="btn btn-danger gap-right" (click)="ResetForm()">Reset</button>
+                            <button type="submit" class="btn btn-primary" [disabled]="!clientForm.valid">Create </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label><b>Address:</b></label>
-                    <input type="text" formControlName="Address" class="form-control" [(ngModel)]="this.crudApi.selectedClient.Address" required>
-                    <p *ngIf="Address.touched && Address.invalid" class="error"><sup>*</sup>Please enter at least Address</p>
-                    <p *ngIf="Address.errors?.minlength" class="error"><sup>*</sup>Address shouldn't be less than 6 words</p>
+                <br><br>
+                <div class=" text-center">
+                    <p class="custom-text">A Company created for <strong>Detailed Residential and commercial cleaning</strong> Based in <strong>Montreal,Qc Canada</strong></p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label><b>Date:</b></label>
-
-                    <input type="date" formControlName="Date" class="form-control text-center" [(ngModel)]="this.crudApi.selectedClient.Date" required>
-                    <p *ngIf="Date.touched && Date.invalid" class="error"><sup>*</sup>Please enter a correct date</p>
-
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label><b>Time:</b></label>
-                    <input type="time" formControlName="time" class="form-control text-center" [(ngModel)]="this.crudApi.selectedClient.time" required>
-                    <p *ngIf="time.touched && time.invalid" class="error"><sup>*</sup>Please set the time</p>
-
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label><b>email:</b></label>
-                    <input type="email" formControlName="email" placeholder="name@email.com" class="form-control" [(ngModel)]="this.crudApi.selectedClient.email" required>
-                    <p *ngIf="email.touched && email.invalid" class="error"><sup>*</sup>Please enter an email Address</p>
-                    <p *ngIf="email.errors?.minlength" class="error"><sup>*</sup> Email shouldn't be less than 2 words</p>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label><b>Mobile:</b></label>
-                    <input type="text" formControlName="mobileNumber" class="form-control" [(ngModel)]="this.crudApi.selectedClient.mobileNumber" required>
-                    <p *ngIf="mobileNumber.touched && mobileNumber.invalid" class="error"><sup>*</sup>Please provide contact number
-                    </p>
-                    <p *ngIf="mobileNumber.errors?.pattern" class="error"><sup>*</sup>Use numbers only number
-                    </p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 mb-4">
-                    <label><b>Instructions:</b></label>
-                    <textarea rows="2" cols="20" type="text" formControlName="Instructions" class="form-control" [(ngModel)]="this.crudApi.selectedClient.Instructions" required></textarea>
-                    <p *ngIf="Instructions.touched && Instructions.invalid" class="error"><sup>*</sup>Please provide the instructions</p>
-                    <p *ngIf="Instructions.errors?.minlength" class="error"><sup>*</sup>Instructions shouldn't be less than 10 words</p>
-                </div>
-            </div>
-
-            <div class="form-group text-center">
-                <button type="button" class="btn btn-danger gap-right" (click)="ResetForm()">Reset</button>
-                <button type="submit" class="btn btn-primary" [disabled]="!clientForm.valid">Create </button>
-            </div>
-
-
-
-        </form>
-
-    </div>
-    <br><br>
-    <div class=" text-center">
-        <p class="custom-text">A Company created for <strong>Detailed Residential and commercial cleaning</strong> Based in <strong>Montreal,Qc Canada</strong></p>
+        </div>
     </div>
 </div>
-<!--        <select id="destination" name="province">
-
-
-    <option value="Villa Clara/Remedios">Villa Clara/Remedios
-        <option value="Villa Clara/Santa clara">Villa Clara/Santa clara
-            <option value="Villa Clara/Caibarien">Villa Clara/Caibarien
-                <option value="Cienfuegos/City">Cienfuegos/City
-                    <option value="Cienfuegos/Trinidad">Cienfuegos/Trinidad
-                        <option value="Havana/City">Havana/City
-
-</select>-->

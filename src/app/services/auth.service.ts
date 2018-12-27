@@ -1,16 +1,8 @@
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
-import * as firabase from 'firebase/app'
-
-
 import 'rxjs/add/operator/toPromise';
-
-
-import * as firebase from 'firebase/app';
-
 import { map } from 'rxjs/operators';
 import { auth } from 'firebase/app';
-
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserInterface } from '../shared/user';
 
@@ -20,7 +12,6 @@ import { UserInterface } from '../shared/user';
 
 export class AuthService {
 
-  //public UserMail: string;
   constructor(private afsAuth: AngularFireAuth, private afs: AngularFirestore) { }
 
   registerUser(email: string, pass: string) {
@@ -73,7 +64,7 @@ export class AuthService {
 
   getAuth() {
     return this.afsAuth.authState.pipe(map(auth => auth));
-    //return this.afsAuth.authState.map(auth => auth);
+
     ;
   }
 

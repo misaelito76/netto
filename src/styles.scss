@@ -1,0 +1,81 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    /* Behind the navbar */
+    padding: 48px 0 0;
+    /* Height of navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+;
+.navbar-brand {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}
+
+.form-control-dark {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+.form-control:focus {
+    border-color: #00BCD4;
+    box-shadow: none;
+}
+
+.form-control {
+    font-size: 14px;
+}
+
+.bg-dark {
+    background-color: #1633FF !important;
+}
+
+.gap-right {
+    margin-right: 10px;
+}
+
+i {
+    width: 22px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.inner-adjust {
+    padding: 0 20px;
+}
+
+.action-block {
+    cursor: pointer;
+}
+
+.action-block .fa-edit:hover {
+    color: #009688;
+}
+
+.action-block .fa-trash-alt:hover {
+    color: #E91E63;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: none;
+}

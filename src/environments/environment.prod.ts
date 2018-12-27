@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "nnnnnnnnnnnnnnnnn-nnnnnnnnnnn",
-    authDomain: "nnnnnnnnnnnnnn-nnnnnnnnnnnn.firebaseapp.com",
-    databaseURL: "https://nnnnnnnnnnnnnnnn-nnnnnnnnnnnnn.firebaseio.com",
-    projectId: "nnnnnnnnnnnnn-nnnnnnnnnnnn",
-    storageBucket: "nnnnnnnnnnnnn-nnnnnnnn.nnnnnnnn.com",
-    messagingSenderId: "nnnnnnnnnnnnn"
+    apiKey: "AIzaSyA6t4EsRrNcBwKGS5YhbIHRA-HmmQxhcfA",
+    authDomain: "netto-a5a4f.firebaseapp.com",
+    databaseURL: "https://netto-a5a4f.firebaseio.com",
+    projectId: "netto-a5a4f",
+    storageBucket: "netto-a5a4f.appspot.com",
+    messagingSenderId: "291519147213"
 
   }  
 };

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ClientCleanning } from '../shared/clientCleanning';  // client data type interface class
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';  // Firebase modules for Database, Data list and Single object
-
+import { ClientCleanning } from '../shared/clientCleanning';  
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
 @Injectable({
@@ -17,13 +14,9 @@ export class CrudService {
   private clients: Observable<ClientCleanning[]>;
   private addDoc: AngularFirestoreDocument<ClientCleanning>;
   private client: Observable<ClientCleanning>;
-
-  
-  
   public selectedClient: ClientCleanning = {
     id: null
   };
-  // Inject AngularFireDatabase Dependency in Constructor
  
   getAllclients() {
     this.clientsCollection = this.afs.collection<ClientCleanning>('clients');
@@ -68,7 +61,7 @@ export class CrudService {
   }
   updateclient(client: ClientCleanning): void {
     let idclient = client.id;
-    this.addDoc = this.afs.doc(`clients/${client.id}`);
+    this.addDoc = this.afs.doc(`clients/${idclient}`);
     this.addDoc.update(client);
   }
   deleteclient(idclient: string): void {
