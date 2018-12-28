@@ -2,10 +2,10 @@
     <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
-            <a mat-list-item routerLink="/admin-list" *ngIf="isAdmin == true; else noAdmin" class="text-white register">Admin</a>
-            <a mat-list-item routerLink="/schedule-cleaning" class="text-white register">Create task</a>
-            <a mat-list-item routerLink="/profile" class="text-white register">Profile</a>
-            <a mat-list-item routerLink="/my-schedule" class="text-white register">My Orders</a>
+            <a mat-list-item routerLink="/admin-list" *ngIf="isAdmin == true; else noAdmin" class="text-white register mat-body-1">Admin</a>
+            <a mat-list-item routerLink="/schedule-cleaning" class="text-white register mat-body-1">Create task</a>
+            <a mat-list-item routerLink="/profile" class="text-white register mat-body-1 ">Profile</a>
+            <a mat-list-item routerLink="/my-schedule" class="text-white register mat-body-1">My Orders</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -18,15 +18,15 @@
             <span class="example-fill-remaining-space"></span>
 
             <a class="a" routerLink="/login" *ngIf="!isLogin">
-                <span class="text-white  "> Login</span>
+                <span class="text-white mat-body-1 "> Login</span>
             </a>
             <span class="example-fill-remaining-space1"></span>
 
 
-            <a class="b" routerLink="/register" *ngIf="!isLogin">
+            <a class="B" routerLink="/register" *ngIf="!isLogin">
 
 
-                <span class="text-white register"> Register</span>
+                <span class="text-white register mat-body-1"> Register</span>
             </a>
 
 

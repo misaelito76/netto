@@ -6,19 +6,19 @@
             <h5> {{Email}}</h5>
         </div>
     </div>
-    <div class="card mat-elevation-z20">
+    <div class="card mat-elevation-z20 ">
         <h1>Cleaning schedule <i class="far fa-clipboard animated infinite heartBeat delay-2s"></i> </h1>
 
         <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg table-hover mat-elevation-z4">
-            <thead>
+            <thead class="head">
                 <tr class="text-center">
-                    <th scope="col">Client Id</th>
-                    <th scope="col">First name</th>
+
+                    <th scope="col">Name</th>
                     <th scope="col">Address</th>
                     <th scope="col">Date</th>
                     <th scope="col">Time</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Mobile number</th>
+                    <th scope="col">Mobile</th>
                     <th scope="col">Instructions</th>
                     <th class="text-center" scope="col">Edit</th>
                 </tr>
@@ -27,14 +27,14 @@
             <tbody class="text-center " *ngFor="let profile of clients">
 
                 <tr *ngIf="profile.userUid == userUid">
-                    <th scope="row">{{profile.id}}</th>
+
                     <td>{{profile.FirstName}}</td>
                     <td>{{profile.Address}}</td>
-                    <td>{{profile.Date}}</td>
+                    <td>{{profile.Date.toDate() | date}}</td>
                     <td>{{profile.time}}</td>
                     <td>{{profile.email}}</td>
                     <td>{{profile.mobileNumber}}</td>
-                    <td>{{profile.Instructions}}</td>
+                    <td class="display-block">{{profile.Instructions }}</td>
                     <td class="text-center action-block">
 
                         <i class="far fa-edit " routerLink="/update-schedule/{{profile.id}}"></i>

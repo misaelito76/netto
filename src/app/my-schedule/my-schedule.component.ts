@@ -79,5 +79,8 @@ export class MyScheduleComponent implements OnInit {
     this.ResetForm();  // Reset form when clicked on reset button
     this.router.navigate(['profile']);
   };
+  toDate(){
+    
+  }
 
 }

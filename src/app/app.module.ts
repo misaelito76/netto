@@ -1,5 +1,5 @@
 //Services
-
+import {Nl2BrPipeModule} from 'nl2br-pipe';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { CrudService } from './services/crud.service';
@@ -29,7 +29,8 @@ import {MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatPaginatorModule
   
   } from '@angular/material';
 
@@ -106,7 +107,8 @@ const routes: Routes = [
             MatSidenavModule,
             MatFormFieldModule,
             MatDatepickerModule,
-          
+            MatPaginatorModule,
+            Nl2BrPipeModule,
             MatNativeDateModule,
             MatProgressBarModule,
             MatCardModule,
