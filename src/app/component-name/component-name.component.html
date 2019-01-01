@@ -9,11 +9,11 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar class="mat-elevation-z8  bottom" color="primary">
+        <mat-toolbar @slide @fade class="mat-elevation-z8  bottom" color="primary">
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-            <span> <img class="user-image  " src="/assets/Netto.png"> Netto</span>
+            <span> <img   class="user-image  " src="/assets/Netto.png"> Netto</span>
 
             <span class="example-fill-remaining-space"></span>
 

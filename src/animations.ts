@@ -2,8 +2,8 @@ import {trigger,transition,style,animate} from '@angular/animations'
 
    export let fade= trigger('fade',[
     transition('void =>*',[
-      style({color:'red', opacity:0}),
-      animate(500,style({color:'blue', opacity:1}))
+      style({color:'pink', opacity:0}),
+      animate(2000,style({color:'magenta', opacity:1}))
     ])
     
     

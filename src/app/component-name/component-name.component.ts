@@ -5,10 +5,15 @@ import { map } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import {fade,slide} from '../../animations'
 @Component({
   selector: 'app-component-name',
   templateUrl: './component-name.component.html',
-  styleUrls: ['./component-name.component.css']
+  styleUrls: ['./component-name.component.css'],
+  animations:[
+    fade,
+    slide
+  ]
 })
 export class ComponentNameComponent {
   public clientForm: FormGroup;
