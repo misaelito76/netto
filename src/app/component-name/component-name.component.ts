@@ -5,7 +5,10 @@ import { map } from 'rxjs/operators';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import {fade,slide} from '../../animations'
+import {fade,slide} from '../../animations';
+import { Location } from '@angular/common';  // Location service is used to go back to previous component
+
+
 @Component({
   selector: 'app-component-name',
   templateUrl: './component-name.component.html',
@@ -30,6 +33,7 @@ export class ComponentNameComponent {
   constructor(private breakpointObserver: BreakpointObserver,
     public authService: AuthService,
     private router: Router,
+    private location: Location,
   ) { }
 
   public noAdmin: any = null;
@@ -59,6 +63,11 @@ export class ComponentNameComponent {
     });
   }
 
+
+   // Go back to previous component
+   goBack() {
+    this.location.back();
+  }
 
 
   logout() {

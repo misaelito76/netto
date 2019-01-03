@@ -29,7 +29,10 @@
                 <span class="text-white register mat-body-1"> Register</span>
             </a>
 
-
+            <!-- goBack() methos to back to previous component -->
+            <a class="nav-item register mat-h2" style="cursor: pointer;" *ngIf="isLogin">
+                <a class="text-white mat-body mat-body-1" (click)="goBack()">Back</a>
+            </a>
 
 
             <a class="nav-item register mat-h2" style="cursor: pointer;" *ngIf="isLogin">
