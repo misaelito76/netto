@@ -1,3 +1,5 @@
+<!--Navigation bar used for the whole app showing and hidding elements(*ngIf)
+according to the logic -->
 <mat-sidenav-container class="sidenav-container  mat-elevation-z20 fixed-bottom">
     <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
         <mat-toolbar>Menu</mat-toolbar>
@@ -29,7 +31,7 @@
                 <span class="text-white register mat-body-1"> Register</span>
             </a>
 
-            <!-- goBack() methos to back to previous component -->
+            <!-- goBack() method to back to previous component -->
             <a class="nav-item register mat-h2" style="cursor: pointer;" *ngIf="isLogin">
                 <a class="text-white mat-body mat-body-1" (click)="goBack()">Back</a>
             </a>

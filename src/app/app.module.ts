@@ -58,6 +58,7 @@ import { ComponentNameComponent } from './component-name/component-name.componen
 import { LayoutModule } from '@angular/cdk/layout';
 
 
+
 const routes: Routes = [
   
   { path: 'home', component: HomeComponent },
@@ -86,7 +87,8 @@ const routes: Routes = [
     ProfileComponent,
     MyScheduleComponent,
     GrdFilterPipe,
-    ComponentNameComponent
+    ComponentNameComponent,
+ 
 
     
     

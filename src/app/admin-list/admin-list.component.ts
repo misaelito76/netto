@@ -22,7 +22,7 @@ animations:[
 })
 export class AdminListComponent implements OnInit {
   public clientForm: FormGroup;
-   //Busqueda
+   //Searching code
    public searchText: string;
   constructor(
     private authService: AuthService,
@@ -43,12 +43,9 @@ export class AdminListComponent implements OnInit {
 
 
   ngOnInit() {
-
-
     this.getListClients();
     this.getCurrentUser();
-
-  }
+ }
 
   getCurrentUser() {
     this.authService.isAuth().subscribe(auth => {
@@ -67,7 +64,7 @@ export class AdminListComponent implements OnInit {
   }
 
 
-
+//method to get all clients
   getListClients() {
     this.crudApi.getAllclients()
       .subscribe(clients => {
@@ -75,21 +72,23 @@ export class AdminListComponent implements OnInit {
       });
     this.router.navigate(['admin-list'])
   }
-
+//delete method
   onDeleteclient(idClient: string): void {
     const confirmacion = confirm('Are you sure?');
     if (confirmacion) {
       this.crudApi.deleteclient(idClient);
     }
   }
-
+//update method
   onPreUpdateclient(client: ClientCleanning) {
     console.log('CLIENT', client);
     this.crudApi.selectedClient = Object.assign({}, client);
   }
+  //reset
   ResetForm() {
     this.clientForm.reset();
   }
+  //Submit data
   submitclientData() {
     this.crudApi.addclient(this.clientForm.value);
     this.toastr.success(this.clientForm.controls['FirstName'].value + ' successfully added!'); 
